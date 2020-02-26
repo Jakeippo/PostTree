@@ -1,0 +1,20 @@
+<template>
+    <div if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" size="medium"></lightning-spinner>
+    </div>
+    <div if:true={treeData} class="slds-scrollable slds-p-around_large" style="height:25rem">
+        <ul>
+            <template for:each={treeData} for:item="post">
+                <li key={post.id}>
+                    <c-post-row post={post}></c-post-row>
+                </li>
+            </template>
+        </ul>
+    </div>
+    <div if:false={treeData}>
+        <p class="slds-align_absolute-center">
+            No posts
+        </p>
+    </div>
+
+</template>

@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+        "baseUrl": ".",
+        "paths": {
+            "c/commentRow": [
+                "commentRow/commentRow.js"
+            ],
+            "c/postRow": [
+                "postRow/postRow.js"
+            ],
+            "c/postTree": [
+                "postTree/postTree.js"
+            ],
+            "c/postTreePage": [
+                "postTreePage/postTreePage.js"
+            ]
+        },
+        "experimentalDecorators": true
+    },
+    "include": [
+        "**/*",
+        "../../../../.sfdx/typings/lwc/**/*.d.ts"
+    ],
+    "typeAcquisition": {
+        "include": [
+            "jest"
+        ]
+    }
+}

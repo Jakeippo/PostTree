@@ -1,0 +1,19 @@
+<template>
+    <div if:true={comment} class="slds-box">
+        <lightning-layout>
+            <lightning-layout-item padding="around-small">
+                <p>
+                    Comment Id:{comment.id}
+                </p>
+                <lightning-formatted-email 
+                    value={comment.email} >
+                </lightning-formatted-email>
+                <h1>{comment.title}</h1> 
+                <lightning-formatted-rich-text
+                    value={comment.body}>
+                </lightning-formatted-rich-text>
+    
+            </lightning-layout-item>
+        </lightning-layout>
+    </div>
+</template>

@@ -1,0 +1,47 @@
+<template>
+    <div if:true={post} class="slds-box">
+        <lightning-layout multiple-rows>
+            <lightning-layout-item padding="around-small" size="1">
+                <!--Id information-->
+                <p>Post Id:{post.id}</p>
+                <p>User #{post.userId}</p>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" size="8">
+                <!--Post Body-->
+                <div>
+                    <h1>{post.title}</h1>
+                    <lightning-formatted-rich-text
+                        value={post.body}>
+                    </lightning-formatted-rich-text>
+                </div>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small" flexibility="auto">
+                <div if:true={post.comments}>
+                    <!--Expansion button-->
+                    <p>Comments ({post.comments.length})</p>
+                    <lightning-button-icon-stateful
+                        icon-name="utility:down"
+                        variant="bare"
+                        selected={expanded}
+                        onclick={toggleExpand} 
+                        alternative-text="Expand">
+                    </lightning-button-icon-stateful>
+                </div>
+            </lightning-layout-item>
+            <!--Expanded Comments-->
+            <div if:true={expanded}>
+                <lightning-layout-item padding="around-small" size = "12">
+                        <ul>
+                            <template for:each={post.comments} for:item="comment">
+                                <li key={comment.id}>
+                                    <c-comment-row  comment={comment}></c-comment-row>
+                                </li>
+                            </template>
+    
+                        </ul>
+                </lightning-layout-item>
+                
+            </div>
+        </lightning-layout>
+    </div>
+</template>

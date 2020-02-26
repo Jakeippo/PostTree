@@ -1,0 +1,84 @@
+<template>
+    
+    <lightning-card 
+        title="Post and Comments Tree" 
+        icon-name="standard:live_chat">
+
+        <div if:true={error}>
+            <lightning-helptext 
+                icon-name="utility:warning" 
+                content={error}>
+            </lightning-helptext>
+        </div>
+        <div slot="actions">
+            <lightning-button
+                onclick={handleLoad}
+                label="Reload"
+                variant="brand">
+            </lightning-button>
+        </div>
+        <div class="slds-p-around-small">
+            <c-post-tree 
+                tree-data={pageData}
+                is-loading={treeLoading}>
+            </c-post-tree>
+        </div>
+        
+
+        <div slot="footer">
+            <lightning-layout vertical-align="center" horizontal-align="center">
+
+                <lightning-layout-item>
+                    <lightning-button 
+                        variant="bare" 
+                        label="prev" 
+                        onclick={goPrev}>
+                    </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item padding="around-small">
+                    <p>
+                        {pageNumber}
+                    </p>
+                </lightning-layout-item>
+            
+                <lightning-layout-item>
+                    <lightning-button 
+                        variant="bare"
+                        label="next" 
+                        onclick={goNext}>
+                    </lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+            
+            <lightning-layout >
+                <lightning-layout-item>
+                    <lightning-combobox
+                        variant="label-inline"
+                        dropdown-alignment = "bottom-left"
+                        label="Posts per Page"
+                        value={itemsPerPage}
+                        placeholder={itemsPerPage}
+                        options={itemOptions}
+                        onchange={handleItemsChange} >
+                    </lightning-combobox>
+                </lightning-layout-item>
+                <lightning-layout-item>
+                    <lightning-combobox
+                        variant="label-inline"
+                        dropdown-alignment = "auto"
+                        label="Jump to Page"
+                        value={pageNumber}
+                        placeholder={pageNumber}
+                        options={pageOptions}
+                        onchange={handlePageJump} >
+                    </lightning-combobox>
+                </lightning-layout-item>
+
+            </lightning-layout>
+                
+             
+           
+        </div>
+    </lightning-card>
+    
+</template>
